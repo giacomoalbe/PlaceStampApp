@@ -1,0 +1,64 @@
+<ion-view cache-view = "false" title="Cerca">
+  	<ion-content class="has-header padding" ng-controller="SearchCtrl as vm">
+  		<pre>{{noResults | json}}</pre>
+  		<div class = "flex-container" ng-if="noResults">
+  			<div class = "row">
+  				<div class = "col col-center">
+  					Non sono presenti foto!
+  				</div>
+  			</div>
+  		</div>
+  		<!-- ERRORS -->
+  		<div ng-if="errors">
+  			<p class = "error">{{errors}}</p>
+  		</div>
+  		<p class = "text-center">Questa &egrave; la foto che hai scattato:</p>
+  		
+  		<!-- CARDS con i risultati -->
+		<div class = "list card" ng-repeat = "res in vm.results | orderBy: res.affinity">
+			<div class = "item">
+				<h3 class = "text-center">{{res.created_at | date : "dd MMM yyyy hh:mm"}}</h3>
+				<h4 class = "text-center">{{res.created_at | date : "HH:mm"}}</h4>
+			</div>
+			<div class = "item item-image">
+				<load-image src = "{{res.image}}"></load-image>
+			</div>
+			<div class = "item flex-cont-h">
+				<div class = "row">
+					<p class = "col col-center flex-1">
+						<i class = "bigger icon ion-ios-world-outline"></i>
+						<span class = "margin-left text-center">{{res.latitude | limitTo: 8}} N </span>
+					</p>	
+					<p class = "col col-center flex-1">
+						<i class = "bigger icon ion-ios-world-outline"></i>
+						<span class = "margin-left text-center">{{res.longitude | limitTo: 8}} W </span>
+					</p>
+				</div>
+			</div>
+			<div class = "item flex-cont-h">
+				<div class = "row">
+					<p class = "col col-center flex-1">
+						<i class = "bigger icon ion-compass"></i>
+						<span class = "margin-left text-center">{{res.compass | limitTo: 8}} &deg; </span>
+					</p>	
+					<p class = "col col-center flex-1">
+						<i class = "bigger icon ion-pinpoint"></i>
+						<span class = "margin-left text-center">{{res.accuracy | limitTo: 8}}</span>
+					</p>
+				</div>
+			</div>
+			<div class = "item flex-cont-h">
+				<div class = "row">
+					<p class = "col col-center flex-1">
+						<i class = "bigger icon ion-android-color-palette"></i>
+						<span class = "margin-left text-center">{{res.color}}</span>
+					</p>	
+					<p class = "col col-center flex-1" ng-if = "res.affinity">
+						<i class = "bigger icon ion-arrow-shrink"></i>
+						<span class = "margin-left text-center">{{res.affinity | limitTo: 5}} %</span>
+					</p>
+				</div>
+			</div>
+		</div>
+  </ion-content>
+</ion-view>

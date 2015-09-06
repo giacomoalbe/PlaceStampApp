@@ -1,0 +1,80 @@
+<ion-view title="Add Photo">
+	<ion-content scroll="false" ng-controller = "ImageCtrl as vm">
+			<section class = "flex-container" ng-if = "!vm.image">
+					 <div class = "row text-center">
+					 	<div class = "col col-center">
+					 		<button class = "button button-positive"
+								ng-click="vm.addImage()">
+								Add Photos
+							</button>
+					 	</div>
+					 </div>
+			</section>
+			<section class = "flex-container" ng-if="vm.image">
+				<div class = "row flex-3">
+					<div class = "col col-center text-center">
+						<img ng-src="{{vm.image.url}}" style="width: 100%"/>
+					</div>
+				</div>
+				<div class = "row flex-0.5 text-center">
+					<div class = "col col-center">
+						<i class = "icon ion-ios-world-outline"></i>
+						<span>{{vm.image.gps.lat}} N</span>
+					</div>
+					<div class = "col col-center">
+						<i class = "icon ion-ios-world-outline"></i>
+						<span>{{vm.image.gps.long}} W</span>
+					</div>
+				</div>
+				<div class = "row flex-0.5 text-center">
+					<div class = "col col-center">
+						<i class = "icon ion-compass"></i>
+						<span>{{vm.image.compass}}</span>
+					</div>
+					<div class = "col col-center">
+						<i class = "icon ion-person"></i>
+						<span>Prova</span>
+					</div>
+				</div>
+				<div class = "row">
+					<div class = "row">
+						<div class = "col col-center text-center">
+							Vuoi inviare questa immagine al server?
+						</div>
+					</div>
+				</div>
+				<div class = "row">
+					<div class = "row">
+						<div class = "col col-center">
+							<button class = "button button-block button-assertive ion-android-cancel"
+									ng-click="vm.discard()">
+							</button>
+						</div>
+						<div class = "col col-center">
+							<button class ="button button-block button-balanced ion-checkmark-circled"
+									ng-click="vm.confirm()">
+							</button>
+						</div>
+					</div>
+				</div>
+			</section>
+					<!--
+			<image-info ng-if="image"
+						sfondo="{{image.url}}"
+						bussola="{{image.compass}}"
+						coord="{{image.gps}}"
+						user="Prova"
+						>
+			</image-info>
+			<p ng-if="image">Vuoi inviare la foto al server?</p>
+			<div ng-if="image" class = "group">
+				<button class = "button col-6 margin button-assertive ion-android-cancel"
+						ng-click="discard()">
+				</button>
+				<button class ="button col-6 margin button-balanced ion-checkmark-circled"
+						ng-click="confirm()">
+				</button>
+			</div>
+			-->
+	</ion-content>
+</ion-view>

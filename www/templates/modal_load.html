@@ -1,0 +1,21 @@
+<div class="modal">
+	<!-- MODAL HEADER -->
+	<ion-header-bar class="bar-secondary bar-positive">
+		<button class="button" ng-click="vm.closeModal()">X</button>
+		<h1 class = "title">Caricamento</h1>
+	</ion-header-bar>
+	<!-- MODAL CONTENT -->
+	<ion-content scroll="false">
+		<section class = "flex-container">
+			<div class="row">
+				<div class = "col col-center text-center">
+					<div class = "spinner-cont">
+						<ion-spinner icon="bubbles" class = "spinner spinner-positive">
+						</ion-spinner>
+					</div>
+					<p class = "status">{{vm.message}}</p>
+				</div>
+			</div>
+		</section>
+	</ion-content>
+</div>
